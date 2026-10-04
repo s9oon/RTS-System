@@ -47,9 +47,8 @@ local function isKeyHeld(key)
 	return UserInputService:IsMouseButtonPressed(key)
 end
 
--- Returns true if this input completes the action, e.g. Keybinds.isPressed(input, "pan") when left click is pressed while Shift is held.
-function Keybinds.isPressed(input: InputObject, action: string): boolean
-	local keys = getKeys(action)
+-- Returns true if this input is one of the keys and every other key is already held.
+local function completes(input, keys)
 	local pressedKey = nil
 	for _, key in keys do
 		if input.KeyCode == key or input.UserInputType == key then
@@ -58,9 +57,39 @@ function Keybinds.isPressed(input: InputObject, action: string): boolean
 	end
 	if not pressedKey then return false end
 
-	-- Every other key in the combination has to be held already.
 	for _, key in keys do
 		if key ~= pressedKey and not isKeyHeld(key) then
+			return false
+		end
+	end
+	return true
+end
+
+-- Returns true if every key in keys is also in otherKeys, and otherKeys has more, e.g. left click is part of Shift + left click.
+local function isPartOf(keys, otherKeys)
+	if #otherKeys <= #keys then return false end
+
+	for _, key in keys do
+		if not table.find(otherKeys, key) then
+			return false
+		end
+	end
+	return true
+end
+
+-- Returns true if this input completes the action, e.g. Keybinds.isPressed(input, "pan") when left click is pressed while Shift is held.
+-- A longer combination wins over a shorter one inside it: with pan = Shift + left click and setDestination = left click,
+-- Shift + left click only counts as pan.
+function Keybinds.isPressed(input: InputObject, action: string): boolean
+	local keys = getKeys(action)
+	if not completes(input, keys) then return false end
+
+	for otherAction, bind in Keybinds do
+		local isBind = type(bind) == "string" or type(bind) == "table"
+		if not isBind or otherAction == action then continue end
+
+		local otherKeys = getKeys(otherAction)
+		if isPartOf(keys, otherKeys) and completes(input, otherKeys) then
 			return false
 		end
 	end

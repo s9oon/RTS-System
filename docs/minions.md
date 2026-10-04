@@ -7,8 +7,8 @@ Minions are created, owned and moved by the **server**. Clients can only ask to 
 Define each type once, after `RTS.Server.start()`, then spawn it by name as many times as you like.
 
 ```lua
-RTS.Server.defineMinion("Knight", {
-	model = ServerStorage.Knight,
+RTS.Server.defineMinion("Minion", {
+	model = ServerStorage.Minion,
 	walkSpeed = 12,
 	animations = {
 		idle = "rbxassetid://123",
@@ -39,7 +39,7 @@ To use a character as a model, press Play, select the character in Workspace, ti
 ## Letting players spawn
 
 ```lua
-RTS.Server.allowPlayerSpawning("Knight") -- The spawn key now spawns Knights.
+RTS.Server.allowPlayerSpawning("Minion") -- The spawn key now spawns Minions.
 RTS.Server.allowPlayerSpawning(nil)      -- Players can't spawn anything.
 ```
 
@@ -48,7 +48,7 @@ Player spawning is off until you call this. Each player can own up to **50** min
 ## Spawning from code
 
 ```lua
-local knight = RTS.Server.spawnMinion("Knight", player, position)
+local minion = RTS.Server.spawnMinion("Minion", player, position)
 ```
 
 - `owner` can be `nil` for minions no player controls, e.g. enemies.
@@ -73,8 +73,8 @@ local knight = RTS.Server.spawnMinion("Knight", player, position)
 | `minion.humanoid` | Its Humanoid. |
 
 ```lua
-knight.died:Connect(function()
-	print(knight.owner, "lost a knight")
+minion.died:Connect(function()
+	print(minion.owner, "lost a minion")
 end)
 ```
 

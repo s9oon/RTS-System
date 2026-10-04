@@ -3,7 +3,7 @@
 Every key the library listens to is in `RTS.Keybinds`. Change one by setting it to a key name:
 
 ```lua
-RTS.Keybinds.setDestination = "MouseButton2"
+RTS.Keybinds.setDestination = "MouseButton1"
 RTS.Keybinds.follow = "F"
 ```
 
@@ -42,6 +42,8 @@ RTS.Keybinds.pan = "MouseButton3"                     -- Just middle click
 ```
 
 A single key and a list with one key work the same. The keys in a combination can be pressed in any order.
+
+When one keybind is part of a longer one, the longer one wins. With `pan = { "LeftShift", "MouseButton1" }` and `setDestination = "MouseButton1"`, Shift + left click only pans and a plain left click only moves minions.
 
 ## Using keybinds in your own code
 

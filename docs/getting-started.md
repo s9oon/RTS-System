@@ -35,8 +35,8 @@ local RTS = require(game:GetService("ReplicatedStorage").Packages.RTS)
 
 RTS.Server.start()
 
-RTS.Server.defineMinion("Knight", { model = ServerStorage.Knight })
-RTS.Server.allowPlayerSpawning("Knight") -- Players can spawn Knights with the spawn key.
+RTS.Server.defineMinion("Minion", { model = ServerStorage.Minion }) -- ServerStorage.Minion is any character model you put there.
+RTS.Server.allowPlayerSpawning("Minion") -- Players can spawn Minions with the spawn key.
 ```
 
 **Client**, e.g. `StarterPlayerScripts/RTS.client.luau`:
@@ -44,7 +44,7 @@ RTS.Server.allowPlayerSpawning("Knight") -- Players can spawn Knights with the s
 ```lua
 local RTS = require(game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("RTS"))
 
-RTS.Keybinds.setDestination = "MouseButton2" -- Optional, see keybinds.md.
+RTS.Keybinds.setDestination = "MouseButton1" -- Optional: left click moves instead of F, see keybinds.md.
 
 RTS.Client.start()
 ```

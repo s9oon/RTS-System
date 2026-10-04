@@ -18,13 +18,22 @@ A modular and extensible RTS system for Roblox, designed with clean architecture
 RTS = "s9oon/rts-system@0.1.0"
 ```
 
+Run `wally install`, then make sure your Rojo project puts the `Packages` folder in ReplicatedStorage:
+
+```json
+"ReplicatedStorage": {
+  "Packages": { "$path": "Packages" }
+}
+```
+
 ```lua
 -- Server
 local RTS = require(game:GetService("ReplicatedStorage").Packages.RTS)
 
 RTS.Server.start()
-RTS.Server.defineMinion("Knight", { model = game:GetService("ServerStorage").Knight })
-RTS.Server.allowPlayerSpawning("Knight")
+-- "Minion" is the name you give this type. ServerStorage.Minion is any character model you put there.
+RTS.Server.defineMinion("Minion", { model = game:GetService("ServerStorage").Minion })
+RTS.Server.allowPlayerSpawning("Minion")
 ```
 
 ```lua
@@ -34,7 +43,7 @@ local RTS = require(game:GetService("ReplicatedStorage"):WaitForChild("Packages"
 RTS.Client.start()
 ```
 
-Right click spawns a Knight. Select minions with `RTS.Client.Selection` and press F to send them to the mouse.
+Right click spawns a Minion. Select minions with `RTS.Client.Selection` and press F to send them to the mouse, or call `RTS.Client.Commands.setDestination(position)` from your own code.
 
 ## Docs
 

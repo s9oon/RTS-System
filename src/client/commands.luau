@@ -31,8 +31,8 @@ local function onInputBegan(input, gameProcessed)
 		end
 	elseif Keybinds.isPressed(input, "setDestination") then
 		local position = getMouseWorldPosition()
-		if position and Selection.hasSelection() then
-			Commands.move(Selection.getSelected(), position)
+		if position then
+			Commands.setDestination(position)
 		end
 	end
 end
@@ -59,6 +59,13 @@ function Commands.move(models: { Model }, position: Vector3)
 		table.insert(ids, model:GetAttribute(Shared.attributes.id))
 	end
 	remotes.MoveMinions:FireServer(ids, position)
+end
+
+-- Moves the selected minions to the position, the same as pressing the setDestination key. Does nothing when nothing is selected.
+function Commands.setDestination(position: Vector3)
+	if not Selection.hasSelection() then return end
+
+	Commands.move(Selection.getSelected(), position)
 end
 
 return Commands
