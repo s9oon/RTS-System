@@ -1,0 +1,11 @@
+[package]
+name = "s9oon/rts-system"
+description = "Reusable RTS unit control system for Roblox"
+version = "0.1.0"
+license = "MIT"
+authors = ["s9oon"]
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+exclude = ["Packages", "demo", "dev.project.json", "*.rbxl", "*.rbxlx", "sourcemap.json"]
+
+[dependencies]

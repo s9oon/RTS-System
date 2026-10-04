@@ -1,0 +1,55 @@
+{
+  "name": "RTS System Dev",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "Packages": {
+        "$className": "Folder",
+        "RTS": {
+          "$path": "src"
+        }
+      }
+    },
+
+    "Players": {
+      "$properties": {
+        "CharacterAutoLoads": false
+      }
+    },
+
+    "ServerStorage": {
+      "MyCharacter": {
+        "$path": "demo/models/MyCharacter.rbxmx"
+      }
+    },
+
+    "ServerScriptService": {
+      "Demo": {
+        "$path": "demo/server"
+      }
+    },
+
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "Demo": {
+          "$path": "demo/client"
+        }
+      }
+    },
+
+    "Workspace": {
+      "$properties": {
+        "StreamingEnabled": false
+      },
+      "Baseplate": {
+        "$className": "Part",
+        "$properties": {
+          "Anchored": true,
+          "Size": [512, 4, 512],
+          "Position": [0, -2, 0]
+        }
+      }
+    }
+  }
+}
