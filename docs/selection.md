@@ -47,4 +47,6 @@ end)
 
 ## Controls
 
-The library doesn't have selection controls yet, games call these functions from their own input or UI. The demo has simple test keys, see [demo.md](demo.md).
+How players select is up to each game, so the library doesn't bind any selection keys. Call these functions from your own input or UI: clicking minions, dragging a box, a unit panel, number keys for groups, whatever fits your game.
+
+The demo has a simple example: G toggles the minion under the mouse, H selects all and J deselects all. See `demo/client/main.client.luau` and [demo.md](demo.md).

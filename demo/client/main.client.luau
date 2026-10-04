@@ -10,7 +10,7 @@ RTS.Keybinds.setDestination = "F" -- Moves the selected minions to the mouse.
 
 RTS.Client.start()
 
--- Simple test keys for selection, until the library has proper selection controls:
+-- Games decide how players select minions. This is a simple example built on RTS.Client.Selection:
 -- G toggles the minion under the mouse, H selects all, J deselects all.
 local Selection = RTS.Client.Selection
 local minionsFolder = Workspace:WaitForChild(RTS.Shared.minionsFolderName)
