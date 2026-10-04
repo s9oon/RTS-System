@@ -35,9 +35,11 @@ local RTS = require(game:GetService("ReplicatedStorage").Packages.RTS)
 
 RTS.Server.start()
 
-RTS.Server.defineMinion("Minion", { model = ServerStorage.Minion }) -- ServerStorage.Minion is any character model you put there.
+RTS.Server.defineMinion("Minion", { model = ServerStorage.Minion })
 RTS.Server.allowPlayerSpawning("Minion") -- Players can spawn Minions with the spawn key.
 ```
+
+> **Note:** `Minion` is only an example unit name. Replace it with whatever units your game uses.
 
 **Client**, e.g. `StarterPlayerScripts/RTS.client.luau`:
 
@@ -53,20 +55,20 @@ Call each `start()` once. Change keybinds before `RTS.Client.start()`, or at any
 
 ## Recommended place settings
 
-The RTS camera replaces the player's own view, so most games want:
+The RTS camera replaces the player's own view, so most games want to:
 
-- **Players.CharacterAutoLoads = false** if players shouldn't have a character of their own walking around.
-- **Workspace.StreamingEnabled = false** for now. With streaming on, the client only loads the area around the player's character, so the camera shows nothing when the character is far away or missing. Streaming around the camera is planned.
+* Set **Players.CharacterAutoLoads = false** if players shouldn't have a character of their own walking around.
+* Set **Workspace.StreamingEnabled = false** for now. With streaming on, the client only loads the area around the player's character, so the camera shows nothing when the character is far away or missing. Streaming around the camera is planned.
 
 ## What's in the package
 
-| | Side | Docs |
-|---|---|---|
-| `RTS.Server` | Server | [minions.md](minions.md) |
+|                        | Side   | Docs                         |
+| ---------------------- | ------ | ---------------------------- |
+| `RTS.Server`           | Server | [minions.md](minions.md)     |
 | `RTS.Client.Selection` | Client | [selection.md](selection.md) |
-| `RTS.Client.Commands` | Client | [commands.md](commands.md) |
-| `RTS.Client.Camera` | Client | [camera.md](camera.md) |
-| `RTS.Keybinds` | Client | [keybinds.md](keybinds.md) |
+| `RTS.Client.Commands`  | Client | [commands.md](commands.md)   |
+| `RTS.Client.Camera`    | Client | [camera.md](camera.md)       |
+| `RTS.Keybinds`         | Client | [keybinds.md](keybinds.md)   |
 
 ## Try the demo
 
