@@ -78,13 +78,15 @@ local function onInputBegan(input, gameProcessed)
 	if gameProcessed then return end
 
 	if Keybinds.isPressed(input, "pan") then
-		dragAnchor = getGroundPointUnderMouse()
-		followTarget = nil -- Panning takes over from following.
+		-- Panning does nothing while following, so clicks don't drop the lock. Only the follow key unlocks it.
+		if not followTarget then
+			dragAnchor = getGroundPointUnderMouse()
+		end
 	elseif Keybinds.isPressed(input, "follow") then
 		-- Locks onto the oldest selected minion, switching straight to it if another one is being followed.
 		-- Pressing it again on the minion already being followed, or with nothing selected, unlocks the camera.
 		local minion = Selection.getSelected()[1]
-		followTarget = if minion == followTarget then nil else minion
+		Camera.follow(if minion == followTarget then nil else minion)
 	end
 end
 
@@ -115,6 +117,9 @@ end
 -- Locks the camera onto a model, or unlocks it when given nil.
 function Camera.follow(model: Model?)
 	followTarget = model
+	if model then
+		dragAnchor = nil -- Stop any pan in progress, so it doesn't fight the follow.
+	end
 end
 
 -- Returns the model the camera is locked onto, or nil.

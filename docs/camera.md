@@ -8,7 +8,7 @@
 | Scroll wheel | Zooms in and out, between 15 and 150 studs above the ground. |
 | `follow` keybind (Space) | Locks onto the oldest selected minion. Press it again on the same minion, or with nothing selected, to unlock. |
 
-The camera stops following when you pan or when the followed minion is removed.
+The camera stays locked until you press the follow key again or the followed minion is removed. Panning does nothing while it is locked.
 
 ## From code
 
