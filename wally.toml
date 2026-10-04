@@ -6,6 +6,6 @@ license = "MIT"
 authors = ["s9oon"]
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
-exclude = ["Packages", "demo", "dev.project.json", "*.rbxl", "*.rbxlx", "sourcemap.json"]
+exclude = ["Packages", "demo", "docs", "dev.project.json", "*.rbxl", "*.rbxlx", "sourcemap.json"]
 
 [dependencies]
