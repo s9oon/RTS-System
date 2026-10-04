@@ -15,7 +15,7 @@ A modular and extensible RTS system for Roblox, designed with clean architecture
 ```toml
 # your game's wally.toml
 [dependencies]
-RTS = "s9oon/rts-system@0.1.0"
+RTS = "s9oon/rts-system@0.2.0"
 ```
 
 Run `wally install`, then make sure your Rojo project puts the `Packages` folder in ReplicatedStorage:
